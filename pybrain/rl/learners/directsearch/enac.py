@@ -24,7 +24,7 @@ class ENAC(PolicyGradientLearner):
         print((self.dataset.getNumSequences()))
         for n in range(self.dataset.getNumSequences()):
             _state, _action, reward = self.dataset.getSequence(n)
-            seqidx = ravel(self.dataset['sequence_index'])
+            seqidx = ravel(self.dataset['sequence_index']).astype(int)
             if n == self.dataset.getNumSequences() - 1:
                 # last sequence until end of dataset
                 loglh = self.loglh['loglh'][seqidx[n]:, :]

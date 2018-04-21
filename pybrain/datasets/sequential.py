@@ -4,7 +4,7 @@ __author__ = 'Thomas Rueckstiess, ruecksti@in.tum.de'
 
 from scipy import ravel, r_
 from random import sample
-
+import numpy as np
 from pybrain.datasets.supervised import SupervisedDataSet
 
 
@@ -39,7 +39,7 @@ class SequentialDataSet(SupervisedDataSet):
     def _getSequenceField(self, index, field):
         """Return a sequence of one single field given by `field` and indexed by
         `index`."""
-        seq = ravel(self.getField('sequence_index'))
+        seq = ravel(self.getField('sequence_index')).astype(np.uint)
         if len(seq) == index + 1:
             # user wants to access the last sequence, return until end of data
             return self.getField(field)[int(seq[index]):]

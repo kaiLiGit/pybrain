@@ -28,6 +28,7 @@ from pybrain.rl.experiments.episodic import EpisodicExperiment
 from pybrain.tools.shortcuts import buildNetwork
 from pybrain.tools.plotting import MultilinePlotter
 
+import pylab
 from pylab import figure, ion
 from scipy import mean
 import sys
@@ -103,7 +104,7 @@ while x<5000:
     agent.reset()
     if useGraphics:
         pl.update()
-
+        pylab.gcf().canvas.draw()
 
 if len(sys.argv) > 2:
     agent.history.saveToFile(sys.argv[1], protocol=-1, arraysonly=True)

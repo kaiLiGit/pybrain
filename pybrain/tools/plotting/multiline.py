@@ -128,7 +128,8 @@ class MultilinePlotter:
     def setLineStyle(self, id=None, **kwargs):
         """ hand parameters to the specified line(s), and set them as default for new lines
 
-    :key id: The line or lines (list!) to be modified - defaults to last one added """
+           :key id: The line or lines (list!) to be modified - defaults to last one added
+        """
         if id is None:
             id = self.currentID
 
@@ -137,7 +138,7 @@ class MultilinePlotter:
             self._checkMaxId(max(id) + self.offset)
             for i in id:
                 self.Lines[i + self.offset].set(**kwargs)
-        elif id >= 0:
+        elif id is not None and id >= 0:
             # apply to selected line
             self._checkMaxId(id + self.offset)
             self.Lines[id + self.offset].set(**kwargs)
